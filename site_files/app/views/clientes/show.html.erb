@@ -1,0 +1,168 @@
+<p></p>
+
+<table style="text-align:right" width=100%>
+
+  <tr>
+	  <td style="background: #ddd" width=120>data de envio:</td>
+	  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h @membro.created_at.to_s(:db) %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd" width=120>tipo:</td>
+	  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h tipo2str(@membro.tipo) %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd" width=120>email:</td>
+	  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h @membro.email %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">empresa/cliente: </td>
+	  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h @membro.nome %></td>
+  </tr>
+
+
+  <tr>
+	  <td style="background: #ddd">morada: </b></td>
+  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h @membro.morada %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">código postal: </b></td>
+  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h @membro.cpostal %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">fax: </b></td>
+  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h @membro.fax %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">telefone: </b></td>
+  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h @membro.telefone%></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">telemovel:</td>
+	  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%=h @membro.telemovel %></td>
+  </tr>
+
+
+  </table>
+<br />
+  <table style="text-align:right">
+
+<% def opc_1(exp)
+     if exp 
+       "criança"
+     else
+       "adulto" 
+     end 
+   end
+   def opc_2(exp)
+     if exp 
+       "com transporte"
+     else
+       "sem transporte" 
+     end 
+   end
+   def opc_3(exp)
+     if exp 
+       "com alojamento"
+     else
+       "sem alojamento"
+     end 
+   end
+%>
+
+<% if not @membro.c1_nome.blank? %><tr>
+	  <td style="background: #ddd" width=120>convidado 1:</td>
+	  <td style="background: #6AF352" width=5></td>	  
+	  <td><%=h @membro.c1_nome %>:</td>
+	  <td style="text-align:left"><%=h opc_1 @membro.c1_tipo %></td>
+   </tr>
+   <tr>
+          <td ></td>
+	  <td></td>	  
+	  <td><%=h opc_2 @membro.c1_transporte %>;</td>
+          <td><%=h opc_3 @membro.c1_alojamento %></td>
+  </tr>
+<tr> </tr><% end %>
+<% if not @membro.c2_nome.blank? %><tr>
+	  <td style="background: #ddd" width=120>convidado 2:</td>
+	  <td style="background: #6AF352" width=5></td>	  
+	  <td><%=h @membro.c2_nome %>:</td>
+	  <td style="text-align:left"><%=h opc_1 @membro.c2_tipo %></td>
+   </tr>   
+   <tr>
+          <td ></td>
+	  <td></td>	  
+	  <td><%=h opc_2 @membro.c2_transporte %>;</td>
+          <td><%=h opc_3 @membro.c2_alojamento %></td>
+   </tr>
+<tr> </tr><% end %>
+<% if not @membro.c3_nome.blank? %><tr>
+	  <td style="background: #ddd" width=120>convidado 3:</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td><%=h @membro.c3_nome %>:</td>
+	  <td style="text-align:left"><%=h opc_1 @membro.c3_tipo %></td>
+   </tr>
+   <tr>
+          <td ></td>
+	  <td></td>	  
+	  <td><%=h opc_2 @membro.c3_transporte %>;</td>
+          <td><%=h opc_3 @membro.c3_alojamento %></td>
+  </tr><% end %>
+
+
+  </table>
+  <table style="text-align:right">
+  <tr>
+	  <td style="background: #ddd" width=120>Observações</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td style="background: #ddd"><%=h @membro.aux  %></td>
+  </tr>
+	  </table>
+
+	    <table style="text-align:right">
+  <tr>
+	  <td style="background: #ddd" width=120>nr cliente</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td style="background: #ddd"><%= h @membro.up_nr_cliente  %></td>
+  </tr>
+<tr>
+	  <td style="background: #ddd" width=120>nr adultos</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td style="background: #ddd"><%= h @membro.up_adulto %></td>
+	  </tr>
+  <tr>
+	  <td style="background: #ddd" width=120>nr criancas</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td style="background: #ddd"><%= h @membro.up_crianca  %></td>
+	  </tr>
+<tr>
+	  <td style="background: #ddd" width=120>transporte</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td style="background: #ddd"><%= h @membro.up_transporte  %></td>
+	  </tr>
+<tr>
+	  <td style="background: #ddd" width=120>alojamento</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td style="background: #ddd"><%= h @membro.up_alojamento  %></td>
+  </tr>	  
+	  </table>
+
+  <p></p>  <p></p>
+
+<%= link_to 'Editar', edit_membro_path(params[:xpto],@membro) %> |
+<%= link_to 'Voltar para listagem', membros_path(params[:xpto]) %>

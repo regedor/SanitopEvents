@@ -1,0 +1,116 @@
+<h1>ficha de inscrição</h1>
+<h2><%=@sub_titulo%></h2>
+
+<%= error_messages_for :membro %>
+<br />
+<% form_for(@membro) do |f| %>
+  <table style="text-align:right" width=100%>
+
+
+
+  <tr>
+	  <td style="background: #ddd" width=120>email:</td>
+	  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%= f.text_field :email %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">empresa/cliente: </td>
+	  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%= f.text_field :nome , :size => 60%></td>
+  </tr>
+
+
+  <tr>
+	  <td style="background: #ddd">morada: </b></td>
+  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%= f.text_field :morada , :size => 60%></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">código postal: </b></td>
+  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%= f.text_field :cpostal %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">fax: </b></td>
+  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%= f.text_field :fax, :size => 15 %></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">telefone: </b></td>
+  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%= f.text_field :telefone , :size => 15%></td>
+  </tr>
+
+  <tr>
+	  <td style="background: #ddd">telemovel:</td>
+	  <td style="background: #00ADEF" width=5></td>	  
+    <td style="text-align:left; background: #ddd"><%= f.text_field :telemovel , :size => 15%></td>
+  </tr>
+
+
+  </table>
+<br />
+  <table style="text-align:right">
+
+<% opc_1 = [["adulto",false],["criança ([3-12]anos)",true]] 
+   opc_2 = [["não pretende transporte",false],["pretende transporte",true]] 
+   opc_3 = [["não pretende alojamento",false],["pretende alojamento",true]] 
+%>
+
+    <tr>
+	  <td style="background: #ddd" width=120>convidado 1:</td>
+	  <td style="background: #6AF352" width=5></td>	  
+	  <td><%= f.text_field :c1_nome %></td>
+	  <td style="text-align:left"><%= f.select :c1_tipo, opc_1, :prompt => 'seleccione' %></td>
+   </tr>
+   <% if @tipo== 11 or @tipo==21 %><tr>
+          <td ></td>
+	  <td></td>	  
+	  <td><%= f.select :c1_transporte, opc_2, :prompt => 'transporte?' %></td>
+          <td><%= f.select :c1_alojamento, opc_3, :prompt => 'alojamento?' %></td>
+  </tr><% end %>
+<tr> </tr>
+   <tr>
+	  <td style="background: #ddd" width=120>convidado 2:</td>
+	  <td style="background: #6AF352" width=5></td>	  
+	  <td><%= f.text_field :c2_nome %></td>
+	  <td style="text-align:left"><%= f.select :c2_tipo, opc_1, :prompt => 'seleccione' %></td>
+   </tr>   
+   <% if @tipo== 11 or @tipo==21 %><tr>
+          <td ></td>
+	  <td></td>	  
+	  <td><%= f.select :c2_transporte, opc_2, :prompt => 'transporte?' %></td>
+          <td><%= f.select :c2_alojamento, opc_3, :prompt => 'alojamento?' %></td>
+   </tr><% end %>
+<tr> </tr>
+   <tr>
+	  <td style="background: #ddd" width=120>convidado 3:</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td><%= f.text_field :c1_nome %></td>
+	  <td style="text-align:left"><%= f.select :c3_tipo, opc_1, :prompt => 'seleccione' %></td>
+   </tr>
+   <% if @tipo== 11 or @tipo==21 %><tr>
+          <td ></td>
+	  <td></td>	  
+	  <td><%= f.select :c3_transporte, opc_2, :prompt => 'transporte?' %></td>
+          <td><%= f.select :c3_alojamento, opc_3, :prompt => 'alojamento?' %></td>
+  </tr><% end %>
+
+
+  </table>
+  <table style="text-align:right">
+  <tr>
+	  <td style="background: #ddd" width=120>Observações</td>
+	  <td style="background: #FF9900" width=5></td>	  
+	  <td style="background: #ddd"><%= f.text_field :aux, :size => 60  %></td>
+  </tr>
+  </table>
+
+  <CENTER>  <p>
+    <%= f.submit "    Enviar    " %>
+  </p></CENTER>
+<% end %>

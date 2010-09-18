@@ -1,0 +1,10 @@
+<% form_for(@cliente) do |f| %>
+  <CENTER>  
+    <tr>
+      <%= f.label :codigo_convite, "código do convite" %>
+      <%= f.text_field :codigo_convite %>
+    </tr>
+    <p> <%= f.submit "Usar convite" %> </p>
+  </CENTER>
+<% end %>
+ 

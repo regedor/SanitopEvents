@@ -1,0 +1,38 @@
+<% if admin? %><h1>Inscrições<small><i> (<%= h @membros.size %>)</i></small></h1>
+
+<table width=100%><tr>
+    <th>Nr</th>
+    <th>Tipo</th>
+    <th>Email</th>
+    <th>Nome</th>
+    <th>Convidados</th>
+    <th>Telemovel</th>
+  </tr>
+<% i = false %>
+<% for membro in @membros %>
+  <tr <% if !membro.aux.blank? %>bgcolor=#ff3366<%elsif i %>bgcolor=#dddddd<% end %>><%i=(not i)%>
+    <td><%=h membro.id %></td>
+    <td><%=h tipo2str(membro.tipo) %></td>
+    <td><%=h membro.email %></td>
+
+    <td><%=h membro.nome %></td>
+    
+    <td><%=h membro.nr_de_convidados %></td>
+    <td><%=h membro.telemovel %></td>
+    
+    <td><%= link_to 'Detalhes', membro_path(params[:xpto],membro) %></td>
+    <td><%= link_to 'Editar', edit_membro_path(params[:xpto],membro) %></td>
+    <% link_to 'Remover', membro_path(params[:xpto],membro), :confirm => 'Are you sure?', :method => :delete %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to "Ver Convidados", convidados_path(params[:xpto]) %>
+<p>Criar Nova inscrição: 
+<%= link_to (tipo2str(10)+" "), new_membro_path(tipo2str(10)) %>|
+<%= link_to (tipo2str(11)+" "), new_membro_path(tipo2str(11)) %>|
+<%= link_to (tipo2str(20)+" "), new_membro_path(tipo2str(20)) %>|
+<%= link_to (tipo2str(21)), new_membro_path(tipo2str(21)) %></p>
+<% end %>

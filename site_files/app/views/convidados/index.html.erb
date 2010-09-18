@@ -1,0 +1,27 @@
+<% if admin? %><h1>Convidados<small><i> (<%= h @convidados.size %>)</i></small></h1>
+
+<table width=100%><tr>
+    <th>empresa</th>
+    <th>nome</th>
+    <th>criança</th>
+    <th>transporte</th>    
+    <th>alojamento</th>
+  </tr>
+<% i = false %>
+<% for convidado in @convidados %>
+<tr <% if i %> bgcolor=#dddddd<% end %> >
+<%i=(not i)%>
+    <td><%=h convidado.empresa %></td>
+    <td><%=h convidado.nome %></td>
+    
+    <td><%=h convidado.tipo %></td>
+    <td><%=h convidado.transporte %></td>
+    <td><%=h convidado.alojamento %></td>
+    
+    <td><%= link_to 'Inscrição', edit_cliente_path(convidado.id_cliente) %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to "Ver Inscrições", clientes_path %></p>
+<% end %>

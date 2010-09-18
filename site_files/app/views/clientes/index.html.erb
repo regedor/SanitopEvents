@@ -1,0 +1,46 @@
+<h1>Inscrições <small><i>(<%= h @clientes.size %>)</i></small></h1>
+
+<table width=100%>
+  <tr>
+    <th>Id</th>
+    <th>Tipo</th>
+    <th>Loja</th>
+    <th>Cliente</th>
+    <th>Nome</th>
+    <th>Telemovel</th>
+    <th>Adultos</th>
+    <th>Criancas</th>
+    <th>Transporte</th>
+    <th>Alojamento</th>
+    <th></th>
+  </tr>
+  
+  <% i = false %>
+  <% for cliente in @clientes %>
+    <tr <% if !cliente.aux.blank? %>bgcolor=#ff3366<%elsif i %>bgcolor=#dddddd<% end %>><%i=(not i)%>
+      <td><%=h cliente.id %></td>
+      <td><%=h cliente.tipo %></td>
+
+      <td><%=h cliente.numero_agencia %></td>
+      <td><%=h cliente.numero_cliente %></td>
+
+      <td><%=h cliente.nome %></td>
+      <td><%=h cliente.telemovel %></td>
+
+      <td><%=h cliente.up_adulto%></td>	  
+      <td><%=h cliente.up_crianca%></td>
+      <td><%=h cliente.up_transporte %></td>    
+      <td><%=h cliente.up_alojamento%></td>
+
+      <td>
+        <%= link_to 'Editar', edit_cliente_path(cliente) %>
+        <%= link_to 'Apagar', cliente_path(cliente), :confirm => 'Tem a certeza?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to "Ver Convidados", convidados_path %> |
+  <%= link_to "Download CSV", clientes_path(:format=>:csv) %>
+</p> 

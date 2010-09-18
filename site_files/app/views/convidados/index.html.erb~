@@ -1,0 +1,43 @@
+<% if admin? %><h1>Convidados<small><i> (<%= h @convidados.size %>)</i></small></h1>
+
+<table width=100%><tr>
+    <th>codigo</th>
+    <th>inscrição</th>
+    <th>empresa</th>
+    <th>nome</th>
+    <th>criança</th>
+    <th>transporte</th>
+    
+    <th>alojamento</th>
+  </tr>
+<% i = false %>
+<% for membro in @convidados %>
+<tr <% if i %> bgcolor=#ddd<% end %> >
+<%i=(not i)%>
+    <td><%=h membro.id %></td>
+    <td><%=h membro.id_membro %></td>
+    <td><%=h membro.empresa %></td>
+    <td><%=h membro.nome %></td>
+    
+    <td><%=h membro.tipo %></td>
+    <td><%=h membro.transporte %></td>
+        <td><%=h membro.alojamento %></td>
+    
+    <td><%= link_to 'Inscrição', membro_path(params[:xpto],membro.id_membro) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<p> <%= link_to "Ver Convidados", convidados_path %>:
+<%= link_to (tipo2str(10)+" "), convidado_path(:id=> 10) %>|
+<%= link_to (tipo2str(11)+" "), convidado_path(:id=> 11) %>|
+<%= link_to (tipo2str(20)+" "), convidado_path(:id=> 20) %>|
+<%= link_to (tipo2str(21)), convidado_path(:id=> 21) %></p>
+<%= link_to "Ver Inscrições", membros_path(params[:xpto]) %>
+<p>Criar Nova inscrição: 
+<%= link_to (tipo2str(10)+" "), new_membro_path(tipo2str(10)) %>|
+<%= link_to (tipo2str(11)+" "), new_membro_path(tipo2str(11)) %>|
+<%= link_to (tipo2str(20)+" "), new_membro_path(tipo2str(20)) %>|
+<%= link_to (tipo2str(21)), new_membro_path(tipo2str(21)) %></p>
+<% end %>
