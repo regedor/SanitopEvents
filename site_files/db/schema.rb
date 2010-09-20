@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(:version => 1) do
   create_table "clientes", :force => true do |t|
     t.integer  "tipo"
     t.string   "codigo_convite"
-    t.string   "numero_cliente"
     t.string   "numero_agencia"
+    t.string   "numero_cliente"
     t.string   "email"
     t.string   "nome"
     t.string   "telemovel"

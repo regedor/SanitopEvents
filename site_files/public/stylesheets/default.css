@@ -230,10 +230,11 @@ padding: 50px;
 margin-bottom: 0px;
 }
 .panel_logo {
-position: relative;
-top: 15px;
-left: 51px;
-height: 144px;
+margin: auto;
+text-align:center;
+//text-align:right;
+//margin-right:57px;
+padding-top:33px;
 }
 .panel_main {
 position: relative;
