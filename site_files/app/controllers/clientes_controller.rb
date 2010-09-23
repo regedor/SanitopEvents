@@ -59,7 +59,7 @@ class ClientesController < ApplicationController
       format.csv  { 
         filename = I18n.l(Time.now, :format => :short) + "-forum_2010_clientes.csv"
         content  = FasterCSV.generate(:col_sep => "\t") do |tsv|
-          tsv << %w/Id Tipo Loja Cliente Nome Telemovel Adultos Criancas Transporte Alojamento/  
+          tsv << %w/Id Tipo Loja Cliente Nome Telemovel Email Adultos Criancas Transporte Alojamento/  
           @clientes.each do |cliente|
             tsv << [
               cliente.id,
@@ -68,10 +68,11 @@ class ClientesController < ApplicationController
               cliente.numero_cliente,
               cliente.nome,
               cliente.telemovel,
-              cliente.up_adulto,
-              cliente.up_crianca,
-              cliente.up_transporte,
-              cliente.up_alojamento,
+              cliente.email,
+              cliente.nr_de_convidados_adultos,
+              cliente.nr_de_convidados_nao_adultos,
+              cliente.nr_de_convidados_transporte_all,
+              cliente.nr_de_convidados_alojamento,
             ]
           end
         end
