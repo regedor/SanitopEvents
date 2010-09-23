@@ -22,7 +22,7 @@
     <tr>
       <td style="background: #ddd">código do convite: </td>
       <td style="background: #00ADEF" width=5></td>	  
-      <td style="text-align:left; background: #ddd"> <%= f.text_field :codigo_convite%> </td>
+      <td style="text-align:left; background: #ddd"> <%= @cliente.codigo_convite%> </td>
     </tr>
     <tr>
       <td style="background: #ddd">número da loja:</td>
@@ -60,12 +60,12 @@
       <td><%= f.text_field :c1_nome %></td>
       <td style="text-align:left"><%= f.select :c1_tipo, opc_1, :prompt => 'seleccione' %></td>
     </tr>
-    <% if @cliente.tipo != 1 and @cliente.tipo != 4 %><tr>
+    <tr>
       <td ></td>
       <td></td>	  
       <td><%= f.select :c1_alojamento, opc_3, :prompt => 'alojamento?' if @cliente.tipo == 3 or @cliente.tipo == 6 %></td>
       <td><%= f.select :c1_transporte, opc_2, :prompt => 'transporte?' %></td>
-    </tr><tr> </tr><% end %>
+    </tr><tr> </tr>
     <tr> </tr>
     <tr>
       <td style="background: #ddd" width=120>convidado 2:</td>
@@ -73,12 +73,12 @@
       <td><%= f.text_field :c2_nome %></td>
       <td style="text-align:left"><%= f.select :c2_tipo, opc_1, :prompt => 'seleccione' %></td>
     </tr>   
-    <% if @cliente.tipo != 1 and @cliente.tipo != 4 %><tr>
+    <tr>
       <td ></td>
       <td></td>	  
       <td><%= f.select :c2_alojamento, opc_3, :prompt => 'alojamento?' if @cliente.tipo == 3 or @cliente.tipo == 6 %></td>
       <td><%= f.select :c2_transporte, opc_2, :prompt => 'transporte?' %></td>
-    </tr><tr> </tr><% end %>
+    </tr><tr> </tr>
     <tr> </tr>
     <tr>
       <td style="background: #ddd" width=120>convidado 3:</td>
@@ -86,17 +86,17 @@
       <td><%= f.text_field :c3_nome %></td>
       <td style="text-align:left"><%= f.select :c3_tipo, opc_1, :prompt => 'seleccione' %></td>
     </tr>
-    <% if @cliente.tipo != 1 and @cliente.tipo != 4 %><tr>
+    <tr>
       <td ></td>
       <td></td>	  
       <td><%= f.select :c3_alojamento, opc_3, :prompt => 'alojamento?' if @cliente.tipo == 3 or @cliente.tipo == 6 %></td>
       <td><%= f.select :c3_transporte, opc_2, :prompt => 'transporte?' %></td>
-    </tr><tr> </tr><% end %>
+    </tr><tr> </tr>
   </table>
 
   <table style="text-align:right">
     <tr>
-      <td style="background: #ddd" width=120>Observações</td>
+      <td style="background: #ddd" width=120>observações</td>
       <td style="background: #FF9900" width=5></td>	  
       <td style="background: #ddd"><%= f.text_field :aux, :size => 60  %></td>
     </tr>
@@ -106,7 +106,7 @@
 
   <table style="text-align:right">
     <tr>
-      <td style="background: #ddd" width=120>Adultos Extra:</td>
+      <td style="background: #ddd" width=120>adultos extra:</td>
       <td style="background: #FF0000" width=5></td>	  
       <td><%= f.text_field :adultos_int %></td>
       <td ></td>
@@ -118,7 +118,7 @@
       <td><%= f.select :adultos_transporte, opc_2, :prompt => 'transporte?' %></td>
     </tr>
     <tr>
-      <td style="background: #ddd" width=120>Crianças Extra:</td>
+      <td style="background: #ddd" width=120>crianças extra:</td>
       <td style="background: #FF0000" width=5></td>	  
       <td><%= f.text_field :criancas_int %></td>
       <td ></td>
