@@ -1,4 +1,55 @@
 <h1>Inscrições <small><i>(<%= h @clientes.size %>)</i></small></h1>
+<h1>Dia 8</h1>
+<h2>Total de adultos: <span style="color:black"><%=
+  h (@clientes.select { |c| [1,2,3].include? c.tipo }).map { |c| c.nr_de_convidados_adultos}.sum  
+%></small></h2>
+<h2>Total de adultos com alojamento: <span style="color:black"><%=
+  h (@clientes.select { |c| [1,2,3].include? c.tipo }).map { |c| c.nr_de_convidados_adultos_alojamento}.sum  
+%></small></h2>
+<h2>Total de Crianças: <span style="color:black"><%=
+  h (@clientes.select { |c| [1,2,3].include? c.tipo }).map { |c| c.nr_de_convidados_nao_adultos}.sum  
+%></h2>
+<h2>Total de crianças com alojamento: <span style="color:black"><%=
+  h (@clientes.select { |c| [1,2,3].include? c.tipo }).map { |c| c.nr_de_convidados_nao_adultos_alojamento}.sum  
+%></small></h2>
+<h2>Total de transportes para Lisboa: <span style="color:black"><%=
+  h (@clientes.select { |c| [1,2,3].include? c.tipo }).map { |c| c.nr_de_convidados_transporte "Lisboa"}.sum  
+%></small></h2>
+<h2>Total de transportes para Faro: <span style="color:black"><%=
+  h (@clientes.select { |c| [1,2,3].include? c.tipo }).map { |c| c.nr_de_convidados_transporte "Faro"}.sum  
+%></small></h2>
+<h2>Total de transportes para Viseu: <span style="color:black"><%=
+  h (@clientes.select { |c| [1,2,3].include? c.tipo }).map { |c| c.nr_de_convidados_transporte "Viseu"}.sum  
+%></small></h2>
+<h2>Total de transportes para Bragança: <span style="color:black"><%=
+  h (@clientes.select { |c| [1,2,3].include? c.tipo }).map { |c| c.nr_de_convidados_transporte "Bragança"}.sum  
+%></small></h2>
+
+<h1>Dia 9</h1>
+<h2>Total de adultos: <span style="color:black"><%=
+  h (@clientes.select { |c| [4,5,6].include? c.tipo }).map { |c| c.nr_de_convidados_adultos}.sum  
+%></small></h2>
+<h2>Total de adultos com alojamento: <span style="color:black"><%=
+  h (@clientes.select { |c| [4,5,6].include? c.tipo }).map { |c| c.nr_de_convidados_adultos_alojamento}.sum  
+%></small></h2>
+<h2>Total de Crianças: <span style="color:black"><%=
+  h (@clientes.select { |c| [4,5,6].include? c.tipo }).map { |c| c.nr_de_convidados_nao_adultos}.sum  
+%></h2>
+<h2>Total de crianças com alojamento: <span style="color:black"><%=
+  h (@clientes.select { |c| [4,5,6].include? c.tipo }).map { |c| c.nr_de_convidados_nao_adultos_alojamento}.sum  
+%></small></h2>
+<h2>Total de transportes para Lisboa: <span style="color:black"><%=
+  h (@clientes.select { |c| [4,5,6].include? c.tipo }).map { |c| c.nr_de_convidados_transporte "Lisboa"}.sum  
+%></small></h2>
+<h2>Total de transportes para Faro: <span style="color:black"><%=
+  h (@clientes.select { |c| [4,5,6].include? c.tipo }).map { |c| c.nr_de_convidados_transporte "Faro"}.sum  
+%></small></h2>
+<h2>Total de transportes para Viseu: <span style="color:black"><%=
+  h (@clientes.select { |c| [4,5,6].include? c.tipo }).map { |c| c.nr_de_convidados_transporte "Viseu"}.sum  
+%></small></h2>
+<h2>Total de transportes para Bragança: <span style="color:black"><%=
+  h (@clientes.select { |c| [4,5,6].include? c.tipo }).map { |c| c.nr_de_convidados_transporte "Bragança"}.sum  
+%></small></h2>
 
 <table width=100%>
   <tr>
@@ -27,10 +78,10 @@
       <td><%=h cliente.nome %></td>
       <td><%=h cliente.telemovel %></td>
 
-      <td><%=h cliente.up_adulto%></td>	  
-      <td><%=h cliente.up_crianca%></td>
-      <td><%=h cliente.up_transporte %></td>    
-      <td><%=h cliente.up_alojamento%></td>
+      <td><%=h cliente.nr_de_convidados_adultos%></td>	  
+      <td><%=h cliente.nr_de_convidados_nao_adultos%></td>
+      <td><%=h cliente.nr_de_convidados_transporte_all%></td>    
+      <td><%=h cliente.nr_de_convidados_alojamento%></td>
 
       <td>
         <%= link_to 'Editar', edit_cliente_path(cliente) %>

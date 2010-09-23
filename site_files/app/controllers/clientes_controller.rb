@@ -26,7 +26,7 @@ class ClientesController < ApplicationController
       render :home 
     else
       @cliente.tipo = $2[1..1]
-      #@cliente.numero_agencia = $1
+      @cliente.numero_agencia = ($1.to_i / 4).to_s
       define_title
       if params[:cliente].size < 2
         render :new
@@ -37,11 +37,6 @@ class ClientesController < ApplicationController
         @cliente.c1_alojamento ||= false
         @cliente.c2_alojamento ||= false
         @cliente.c3_alojamento ||= false
-        @cliente.up_adulto     = @cliente.nr_de_convidados_adultos
-        @cliente.up_crianca    = @cliente.nr_de_convidados_nao_adultos
-        @cliente.up_alojamento = @cliente.nr_de_convidados_alojamento.to_s
-        @cliente.up_transporte = @cliente.nr_de_convidados_transporte.to_s
-
         if @cliente.save
           redirect_to sucess_path
         else
@@ -100,7 +95,7 @@ class ClientesController < ApplicationController
     define_title
     if @cliente.update_attributes(params[:cliente])
       flash[:notice] = 'Actualizado com sucesso'
-      redirect_to(cliente_path(@cliente))
+      redirect_to :action => 'index'
     else
       render :edit
     end

@@ -11,21 +11,23 @@ class CreateMembros < ActiveRecord::Migration
       t.string   :morada
       t.string   :c1_nome
       t.boolean  :c1_tipo
-      t.boolean  :c1_transporte
+      t.string   :c1_transporte
       t.boolean  :c1_alojamento
       t.string   :c2_nome
       t.boolean  :c2_tipo
-      t.boolean  :c2_transporte
+      t.string   :c2_transporte
       t.boolean  :c2_alojamento
       t.string   :c3_nome
       t.boolean  :c3_tipo
-      t.boolean  :c3_transporte
+      t.string   :c3_transporte
       t.boolean  :c3_alojamento
+      t.integer  :adultos_int            , :default => 0
+      t.string   :adultos_transporte
+      t.boolean  :adultos_alojamento
+      t.integer  :criancas_int           , :default => 0
+      t.string   :criancas_transporte
+      t.boolean  :criancas_alojamento
       t.string   :aux
-      t.integer  :up_crianca 
-      t.integer  :up_adulto 
-      t.string   :up_alojamento
-      t.string   :up_transporte
 
       t.timestamps
     end

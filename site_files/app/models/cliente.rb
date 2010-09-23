@@ -23,13 +23,13 @@ class Cliente < ActiveRecord::Base
   end
 
   def nr_de_convidados
-    self.convidados.compact.size
+    self.convidados.compact.size + self.adultos_int + self.criancas_int
   end
 
   def nr_de_convidados_adultos
     convidados.select do |convidado|
-      convidado.tipo
-    end.size
+      not convidado.tipo
+    end.size + self.adultos_int
   end
 
   def nr_de_convidados_nao_adultos
@@ -39,15 +39,34 @@ class Cliente < ActiveRecord::Base
   def nr_de_convidados_alojamento
     convidados.select do |convidado|
       convidado.alojamento
-    end.size
+    end.size.+ (self.adultos_alojamento ? self.adultos_int : 0 ).+(
+                self.criancas_alojamento ? self.criancas_int : 0 )
   end
 
-  def nr_de_convidados_transporte
+  def nr_de_convidados_adultos_alojamento
+    convidados.select do |convidado|
+      convidado.alojamento and (not convidado.tipo)
+    end.size.+ (self.adultos_alojamento ? self.adultos_int : 0 ).+(
+                self.criancas_alojamento ? self.criancas_int : 0 )
+  end
+
+  def nr_de_convidados_nao_adultos_alojamento
+    nr_de_convidados_alojamento - nr_de_convidados_adultos_alojamento
+  end
+
+  def nr_de_convidados_transporte_all
     convidados.select do |convidado|
       convidado.transporte
-    end.size
+    end.size.+ (self.adultos_transporte ? self.adultos_int : 0 ).+(
+                self.criancas_transporte ? self.criancas_int : 0 )
   end
 
+  def nr_de_convidados_transporte(local)
+    convidados.select do |convidado|
+      convidado.transporte == local
+    end.size.+ (self.adultos_transporte == local ? self.adultos_int : 0 ).+(
+                self.criancas_transporte == local ? self.criancas_int : 0 )
+  end
   
   def self.human_attribute_name(attribute); ""; end
 

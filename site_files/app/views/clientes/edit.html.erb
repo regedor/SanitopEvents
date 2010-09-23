@@ -1,5 +1,9 @@
 <% opc_1 = [["adulto",false],["criança ([3-12]anos)",true]] 
-   opc_2 = [["não pretende transporte",false],["pretende transporte",true]] 
+   opc_2 = [["não pretende transporte",false],
+            ["pretende transporte de Faro","Faro"],
+            ["pretende transporte de Lisboa","Lisboa"],
+            ["pretende transporte de Viseu","Viseu"],
+            ["pretende transporte de Bragança","Bragança"]] 
    opc_3 = [["não pretende alojamento",false],["pretende alojamento",true]] 
 %>
 <h1>Ficha de Inscrição</h1>
@@ -97,29 +101,38 @@
       <td style="background: #ddd"><%= f.text_field :aux, :size => 60  %></td>
     </tr>
   </table>
- 
+
+  <br />
+
   <table style="text-align:right">
     <tr>
-      <td style="background: #ddd" width=120>nr adultos</td>
-      <td style="background: #FF9900" width=5></td>	  
-      <td style="background: #ddd"><%= f.text_field :up_adulto, :size => 60  %></td>
+      <td style="background: #ddd" width=120>Adultos Extra:</td>
+      <td style="background: #FF0000" width=5></td>	  
+      <td><%= f.text_field :adultos_int %></td>
+      <td ></td>
     </tr>
     <tr>
-      <td style="background: #ddd" width=120>nr criancas</td>
-      <td style="background: #FF9900" width=5></td>	  
-      <td style="background: #ddd"><%= f.text_field :up_crianca, :size => 60  %></td>
+      <td ></td>
+      <td ></td>
+      <td><%= f.select :adultos_alojamento, opc_3, :prompt => 'alojamento?' %></td>
+      <td><%= f.select :adultos_transporte, opc_2, :prompt => 'transporte?' %></td>
     </tr>
     <tr>
-      <td style="background: #ddd" width=120>transporte</td>
-      <td style="background: #FF9900" width=5></td>	  
-      <td style="background: #ddd"><%= f.text_field :up_transporte, :size => 60  %></td>
+      <td style="background: #ddd" width=120>Crianças Extra:</td>
+      <td style="background: #FF0000" width=5></td>	  
+      <td><%= f.text_field :criancas_int %></td>
+      <td ></td>
+    </tr>
     </tr>
     <tr>
-      <td style="background: #ddd" width=120>alojamento</td>
-      <td style="background: #FF9900" width=5></td>	  
-      <td style="background: #ddd"><%= f.text_field :up_alojamento, :size => 60  %></td>
-    </tr>	  
+      <td ></td>
+      <td ></td>
+      <td><%= f.select :criancas_alojamento, opc_3, :prompt => 'alojamento?' %></td>
+      <td><%= f.select :criancas_transporte, opc_2, :prompt => 'transporte?' %></td>
+    </tr>
   </table>
+
+
 
   <CENTER>
     <p><%= f.submit "Guardar Alterções" %></p>
