@@ -39,15 +39,14 @@ class Cliente < ActiveRecord::Base
   def nr_de_convidados_alojamento
     convidados.select do |convidado|
       convidado.alojamento
-    end.size.+ (self.adultos_alojamento ? self.adultos_int : 0 ).+(
-                self.criancas_alojamento ? self.criancas_int : 0 )
+    end.size.+ ((self.adultos_alojamento and self.adultos_int) ? self.adultos_int : 0 ).+(
+                (self.criancas_alojamento and self.criancas_int) ? self.criancas_int : 0 )
   end
 
   def nr_de_convidados_adultos_alojamento
     convidados.select do |convidado|
       convidado.alojamento and (not convidado.tipo)
-    end.size.+ (self.adultos_alojamento ? self.adultos_int : 0 ).+(
-                self.criancas_alojamento ? self.criancas_int : 0 )
+    end.size.+ ((self.adultos_alojamento and self.adultos_int) ? self.adultos_int : 0 )
   end
 
   def nr_de_convidados_nao_adultos_alojamento
