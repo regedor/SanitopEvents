@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Convidado
   attr_accessor :id_cliente, :numero_cliente, :empresa, :nome, :tipo, :transporte, :alojamento
 
