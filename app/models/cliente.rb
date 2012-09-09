@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 class Cliente < ActiveRecord::Base
+
   validates_uniqueness_of :codigo_convite, :message => "este convite parece já ter sido utilizado"
   validates_presence_of :numero_cliente, :message => "o número de cliente não pode estar em branco"
   validates_presence_of :numero_agencia, :message => "o número da loja não pode estar em branco"
