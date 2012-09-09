@@ -55,7 +55,7 @@ class Cliente < ActiveRecord::Base
 
   def nr_de_convidados_transporte_all
     convidados.select do |convidado|
-      convidado.transporte
+      not convidado.transporte.blank?
     end.size.+ (self.adultos_transporte ? self.adultos_int : 0 ).+(
                 self.criancas_transporte ? self.criancas_int : 0 )
   end
