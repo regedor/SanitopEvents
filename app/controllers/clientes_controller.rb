@@ -19,7 +19,7 @@ class ClientesController < ApplicationController
 
   def create
     @cliente = Cliente.new(params[:cliente])
-    if @cliente.codigo_convite == "forumsanitop2010admin"
+    if @cliente.codigo_convite == "forumsanitop2012admin"
       session[:login] = Time.now
       redirect_to :action => 'index'
     elsif not @cliente.codigo_convite =~ /(\d+)([A-Z]\d)(\d+)/
@@ -58,7 +58,7 @@ class ClientesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.csv  { 
-        filename = I18n.l(Time.now, :format => :short) + "-forum_2010_clientes.csv"
+        filename = I18n.l(Time.now, :format => :short) + "-forum_2012_clientes.csv"
         content  = FasterCSV.generate(:col_sep => "\t") do |tsv|
           tsv << %w/Id Tipo Nr_Loja Nr_Cliente Nome Telemovel Email Adultos Criancas 
                     Transporte_Faro Transporte_Lisboa Transporte_Brangança Transporte_Viseu Alojamento_adultos Alojamento_Crianças/  

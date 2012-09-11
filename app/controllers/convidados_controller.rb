@@ -43,8 +43,6 @@ class ConvidadosController < ApplicationController
     end
     
 
-
-
     respond_to do |format|
       format.html { 
         if @tipo==0 
